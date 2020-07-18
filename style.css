@@ -105,6 +105,10 @@ h3 {
   top: 3px;
 }
 
+.main-button-hidden {
+  visibility: hidden;
+}
+
 /* Media Query: iPhone (Vertical) */
 @media screen and (max-width: 376px) {
   .player-container {
