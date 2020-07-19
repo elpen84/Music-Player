@@ -5,6 +5,8 @@ const play = document.getElementById("play");
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
 const audio = document.querySelector("audio");
+const progressContainer = document.getElementById("progress-container");
+const progress = document.getElementById("progress");
 
 //music
 const song = [
@@ -89,11 +91,22 @@ function nextSong() {
 
 loadSong(song[songIndex]);
 
+// Update progress bar & Time
+function updateProgessBar(e) {
+  if (isPlaying) {
+    const { duration, currentTime } = e.srcElement;
+    console.log(duration, currentTime);
+    // Updaate progress bar width
+    const progressPercent = (currentTime / duration) * 100;
+    progress.style.width = `${progressPercent}%`;
+  }
+}
+
 //event listeners
 
 prev.addEventListener("click", prevSong);
 next.addEventListener("click", nextSong);
-
+audio.addEventListener("timeupdate", updateProgessBar);
 //play.addEventListener("click", playAudio);
 
 // function playAudio() {
