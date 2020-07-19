@@ -10,22 +10,22 @@ const audio = document.querySelector("audio");
 const song = [
   {
     name: "jacinto-1",
-    diplayName: "Electric Chill Machine",
+    displayName: "Electric Chill Machine",
     artist: "Jacinto Design",
   },
   {
     name: "jacinto-2",
-    diplayName: "Seven Nataion Army (Remix)",
+    displayName: "Seven Nataion Army (Remix)",
     artist: "Jacinto Design",
   },
   {
     name: "jacinto-3",
-    diplayName: "Goodnight, Disco Queen",
+    displayName: "Goodnight, Disco Queen",
     artist: "Jacinto Design",
   },
   {
     name: "metric-1",
-    diplayName: "Front Row (Remix)",
+    displayName: "Front Row (Remix)",
     artist: "Jacinto Design",
   },
 ];
@@ -54,7 +54,7 @@ play.addEventListener("click", () => (isPlaying ? pauseSong() : playSong()));
 
 //update Dom
 function loadSong(song) {
-  title.textContent = song.diplayName;
+  title.textContent = song.displayName;
   artist.textContent = song.artist;
   audio.src = `music/${song.name}.mp3`;
   image.src = `img/${song.name}.jpg`;
@@ -62,19 +62,26 @@ function loadSong(song) {
 
 //current song
 
-let songIndex = 0;
+let songIndex = 1;
 
 //prev song
 function prevSong() {
   songIndex--;
-  console.log(song[songIndex]);
+  if (songIndex < 0) {
+    songIndex = song.length - 1;
+  }
+  loadSong(song[songIndex]);
   playSong();
 }
 
 //Next Song
 function nextSong() {
   songIndex++;
+  if (songIndex > song.length - 1) {
+    songIndex = 0;
+  }
   console.log(song[songIndex]);
+  loadSong(song[songIndex]);
   playSong();
 }
 
