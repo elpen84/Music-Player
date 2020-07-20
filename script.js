@@ -102,17 +102,23 @@ function updateProgessBar(e) {
     const progressPercent = (currentTime / duration) * 100;
     progress.style.width = `${progressPercent}%`;
     // Calculate display  for duration
-
-    //delay switching duation element to avoid nan
-    if (durationSeconds) {
-      durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
-    }
     const durationMinutes = Math.floor(duration / 60);
+    //delay switching duation element to avoid nan
     let durationSeconds = Math.floor(duration % 60);
     if (durationSeconds < 10) {
       durationSeconds = `0${durationSeconds}`;
     }
-    currentTimeEl.textContent = `${durationMinutes}:${durationSeconds}`;
+    if (durationSeconds) {
+      durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
+    }
+    //calculate display for current
+    const currentMinutes = Math.floor(currentTime / 60);
+    let currentSeconds = Math.floor(currentTime % 60);
+    if (currentSeconds < 10) {
+      currentSeconds = `0${currentSeconds}`;
+    }
+    currentTimeEl.textContent = `${currentMinutes}:${currentSeconds}`;
+    console.log(currentTimeEl);
   }
 }
 
