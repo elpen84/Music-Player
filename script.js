@@ -84,7 +84,7 @@ function nextSong() {
   if (songIndex > song.length - 1) {
     songIndex = 0;
   }
-  console.log(song[songIndex]);
+
   loadSong(song[songIndex]);
   playSong();
 }
@@ -123,6 +123,10 @@ function updateProgessBar(e) {
 // Set Progress Bar
 function setProgressBar(e) {
   console.log(e);
+  const width = this.clientWidth;
+  const clickX = e.offsetX;
+  const { duration } = audio;
+  audio.currentTime = (clickX / width) * duration;
 }
 
 //event listeners
