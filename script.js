@@ -118,8 +118,11 @@ function updateProgessBar(e) {
       currentSeconds = `0${currentSeconds}`;
     }
     currentTimeEl.textContent = `${currentMinutes}:${currentSeconds}`;
-    console.log(currentTimeEl);
   }
+}
+// Set Progress Bar
+function setProgressBar(e) {
+  console.log(e);
 }
 
 //event listeners
@@ -127,6 +130,7 @@ function updateProgessBar(e) {
 prev.addEventListener("click", prevSong);
 next.addEventListener("click", nextSong);
 audio.addEventListener("timeupdate", updateProgessBar);
+progressContainer.addEventListener("click", setProgressBar);
 //play.addEventListener("click", playAudio);
 
 // function playAudio() {
